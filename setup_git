@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Define the email and file name
+EMAIL="thanhtruong090123@gmail.com"
+FILE_NAME="github"
+
+# Generate the SSH key with the specified parameters
+ssh-keygen -t rsa -b 4096 -C "$EMAIL" -f "$FILE_NAME" -N ""
+
+# Create the .ssh directory if it doesn't exist
+mkdir -p ~/.ssh
+
+# Move the generated key files to the .ssh directory
+mv "$FILE_NAME" ~/.ssh/
+mv "$FILE_NAME.pub" ~/.ssh/github.pub
+
+# Display the contents of the public key file
+cat ~/.ssh/github.pub
+
+echo "SSH key generated and moved to ~/.ssh/ with the public key displayed above."
